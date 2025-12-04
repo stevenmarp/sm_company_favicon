@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <!-- Inherit res.company form view to add favicon field in a separate group -->
+    <record id="view_company_form_favicon" model="ir.ui.view">
+        <field name="name">res.company.form.favicon</field>
+        <field name="model">res.company</field>
+        <field name="inherit_id" ref="base.view_company_form"/>
+        <field name="arch" type="xml">
+            <!-- Add favicon group after social_media group -->
+            <xpath expr="//group[@name='social_media']" position="after">
+                <group name="favicon_group" string="Favicon">
+                    <field name="favicon" widget="image" 
+                           options="{'size': [64, 64]}"
+                           filename="favicon_filename"
+                           help="Upload a custom favicon for this company (32x32 or 16x16 pixels recommended)"/>
+                    <field name="favicon_filename" invisible="1"/>
+                </group>
+            </xpath>
+        </field>
+    </record>
+</odoo>
