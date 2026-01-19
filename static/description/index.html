@@ -1,0 +1,283 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Company Favicon</title>
+    <style>
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 20px;
+            background: #f5f5f5;
+        }
+        .banner {
+            background: linear-gradient(135deg, #875A7B 0%, #68476b 100%);
+            color: white;
+            padding: 40px;
+            border-radius: 10px;
+            text-align: center;
+            margin-bottom: 30px;
+        }
+        .banner h1 {
+            margin: 0 0 10px 0;
+            font-size: 2.5em;
+        }
+        .banner p {
+            margin: 0;
+            opacity: 0.9;
+            font-size: 1.2em;
+        }
+        .compatibility-box {
+            background: linear-gradient(135deg, #28a745 0%, #20863a 100%);
+            color: white;
+            padding: 20px 30px;
+            border-radius: 10px;
+            margin-bottom: 20px;
+            text-align: center;
+        }
+        .compatibility-box h2 {
+            margin: 0 0 15px 0;
+            font-size: 1.5em;
+        }
+        .version-badges {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            flex-wrap: wrap;
+        }
+        .version-badge {
+            background: rgba(255,255,255,0.2);
+            padding: 10px 25px;
+            border-radius: 25px;
+            font-size: 1.1em;
+            font-weight: bold;
+        }
+        .version-badge.supported {
+            background: rgba(255,255,255,0.3);
+        }
+        .feature-card {
+            background: white;
+            border-radius: 10px;
+            padding: 25px;
+            margin-bottom: 20px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+        .feature-card h2 {
+            color: #875A7B;
+            margin-top: 0;
+            border-bottom: 2px solid #f0f0f0;
+            padding-bottom: 10px;
+        }
+        .feature-list {
+            list-style: none;
+            padding: 0;
+        }
+        .feature-list li {
+            padding: 10px 0;
+            padding-left: 35px;
+            position: relative;
+        }
+        .feature-list li::before {
+            content: "✓";
+            position: absolute;
+            left: 0;
+            color: #28a745;
+            font-weight: bold;
+            font-size: 1.2em;
+        }
+        .steps {
+            counter-reset: step;
+        }
+        .steps li {
+            counter-increment: step;
+            padding-left: 45px;
+            margin-bottom: 15px;
+        }
+        .steps li::before {
+            content: counter(step);
+            background: #875A7B;
+            color: white;
+            width: 28px;
+            height: 28px;
+            border-radius: 50%;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            position: absolute;
+            left: 0;
+            font-weight: bold;
+        }
+        .highlight {
+            background: #fff3cd;
+            padding: 15px 20px;
+            border-radius: 8px;
+            border-left: 4px solid #ffc107;
+            margin-top: 15px;
+        }
+        .format-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: 15px;
+            margin-top: 15px;
+        }
+        .format-item {
+            background: #f8f9fa;
+            padding: 15px;
+            border-radius: 8px;
+            text-align: center;
+        }
+        .format-item .icon {
+            font-size: 2em;
+            margin-bottom: 5px;
+        }
+        .format-item .name {
+            font-weight: bold;
+            color: #875A7B;
+        }
+        .format-item .desc {
+            font-size: 0.85em;
+            color: #666;
+        }
+        .warning-box {
+            background: #f8d7da;
+            border: 1px solid #f5c6cb;
+            color: #721c24;
+            padding: 15px 20px;
+            border-radius: 8px;
+            margin-top: 20px;
+        }
+        .warning-box strong {
+            display: block;
+            margin-bottom: 5px;
+        }
+        .tech-list {
+            background: #e9ecef;
+            padding: 15px 20px;
+            border-radius: 8px;
+            margin-top: 15px;
+        }
+        .tech-list code {
+            background: #dee2e6;
+            padding: 2px 6px;
+            border-radius: 4px;
+            font-family: monospace;
+        }
+    </style>
+</head>
+<body>
+    <div class="banner">
+        <h1>🌐 Company Favicon</h1>
+        <p>Custom favicon per company - Branding made easy!</p>
+    </div>
+
+    <div class="compatibility-box">
+        <h2>🎯 Compatibility</h2>
+        <div class="version-badges">
+            <span class="version-badge supported">✅ Odoo 18.0</span>
+            <span class="version-badge supported">✅ Odoo 17.0</span>
+        </div>
+        <p style="margin-top: 15px; margin-bottom: 0; opacity: 0.9;">
+            Works with both Community and Enterprise editions
+        </p>
+    </div>
+
+    <div class="feature-card">
+        <h2>✨ Features</h2>
+        <ul class="feature-list">
+            <li><strong>Custom favicon per company</strong> - Upload unique favicon for each company</li>
+            <li><strong>Automatic favicon change</strong> - Favicon updates instantly when switching companies</li>
+            <li><strong>Multiple format support</strong> - PNG, ICO, SVG, and GIF formats supported</li>
+            <li><strong>Instant preview</strong> - See your favicon immediately in company settings</li>
+            <li><strong>Multi-company ready</strong> - Perfect for organizations with multiple companies</li>
+            <li><strong>Persistent storage</strong> - Favicon stored securely in database</li>
+            <li><strong>Fallback support</strong> - Uses default Odoo favicon if none uploaded</li>
+        </ul>
+    </div>
+
+    <div class="feature-card">
+        <h2>📋 How to Use</h2>
+        <ol class="steps feature-list">
+            <li>Go to <strong>Settings → Users & Companies → Companies</strong></li>
+            <li>Select the company you want to customize</li>
+            <li>Scroll down to the <strong>"Favicon"</strong> section</li>
+            <li>Upload your favicon image</li>
+            <li>Save - The favicon updates automatically in your browser tab!</li>
+        </ol>
+        <div class="highlight">
+            <strong>💡 Pro Tip:</strong> For best results, use a square PNG image with 32x32 or 16x16 pixels and transparent background.
+        </div>
+    </div>
+
+    <div class="feature-card">
+        <h2>📁 Supported Formats</h2>
+        <div class="format-grid">
+            <div class="format-item">
+                <div class="icon">🖼️</div>
+                <div class="name">PNG</div>
+                <div class="desc">Recommended - Best quality with transparency</div>
+            </div>
+            <div class="format-item">
+                <div class="icon">🔷</div>
+                <div class="name">ICO</div>
+                <div class="desc">Traditional favicon format</div>
+            </div>
+            <div class="format-item">
+                <div class="icon">📐</div>
+                <div class="name">SVG</div>
+                <div class="desc">Vector graphics - Scalable</div>
+            </div>
+            <div class="format-item">
+                <div class="icon">🎬</div>
+                <div class="name">GIF</div>
+                <div class="desc">Animated favicons supported</div>
+            </div>
+        </div>
+    </div>
+
+    <div class="feature-card">
+        <h2>🏢 Multi-Company Support</h2>
+        <p>Each company in your Odoo instance can have its own unique favicon. When users switch between companies, 
+        the browser favicon automatically updates to match the current company's branding.</p>
+        <p>This is perfect for:</p>
+        <ul class="feature-list">
+            <li>Organizations with multiple brands</li>
+            <li>Franchise businesses</li>
+            <li>Holding companies with subsidiaries</li>
+            <li>Service providers managing multiple client companies</li>
+        </ul>
+    </div>
+
+    <div class="feature-card">
+        <h2>⚙️ Technical Details</h2>
+        <div class="tech-list">
+            <ul style="margin: 0; padding-left: 20px;">
+                <li>Extends <code>res.company</code> model with binary favicon field</li>
+                <li>HTTP controller serves favicon at <code>/web/company/&lt;id&gt;/favicon</code></li>
+                <li>JavaScript service monitors company changes using OWL framework</li>
+                <li>Automatic content-type detection (PNG, ICO, SVG, GIF)</li>
+                <li>Browser cache optimization with proper cache headers</li>
+                <li>Graceful fallback to default Odoo favicon</li>
+            </ul>
+        </div>
+        <div class="warning-box">
+            <strong>⚠️ Version Requirement</strong>
+            This module uses the OWL framework service registry which is only available in Odoo 17.0 and later.
+            Not compatible with Odoo 16.0 or earlier versions.
+        </div>
+    </div>
+
+    <div class="feature-card">
+        <h2>📞 Support</h2>
+        <p>Need help? Have questions or feature requests?</p>
+        <ul class="feature-list">
+            <li>Leave a comment on the Odoo Apps page</li>
+            <li>Contact the author through the Odoo Apps platform</li>
+            <li>Check the module documentation and README</li>
+        </ul>
+    </div>
+</body>
+</html>
