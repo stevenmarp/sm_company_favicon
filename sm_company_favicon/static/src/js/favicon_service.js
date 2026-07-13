@@ -1,72 +1,27 @@
-/** @odoo-module **/
-
-import { registry } from "@web/core/registry";
-import { session } from "@web/session";
-
-/**
- * Favicon Service - Updates browser favicon based on current company's custom favicon
- */
-const faviconService = {
-    dependencies: ["company"],
+(function () {
+    'use strict';
     
-    start(env, { company }) {
-        // Store reference to original Odoo favicon
-        this.originalFavicon = this._getCurrentFavicon();
-        
-        // Update favicon initially
-        this._updateFavicon();
-        
-        // Listen for company changes using polling
-        let lastCompanyId = session.user_companies?.current_company;
-        
-        setInterval(() => {
-            const currentCompanyId = this._getCurrentCompanyId();
-            if (currentCompanyId && currentCompanyId !== lastCompanyId) {
-                lastCompanyId = currentCompanyId;
-                this._updateFavicon();
-            }
-        }, 1000);
-        
-        return {};
-    },
+    let originalFavicon = null;
+    let lastCompanyId = null;
     
-    _getCurrentCompanyId() {
-        if (session.user_companies?.current_company) {
-            return session.user_companies.current_company;
-        }
-        return null;
-    },
-    
-    _getCurrentFavicon() {
+    function getCurrentFavicon() {
         const link = document.querySelector("link[rel*='icon']");
         return link ? link.href : '/web/static/img/favicon.ico';
-    },
+    }
     
-    _updateFavicon() {
-        const companyId = this._getCurrentCompanyId();
-        if (!companyId) return;
-        
-        // URL untuk favicon custom company
-        const faviconUrl = `/web/company/${companyId}/favicon?t=${Date.now()}`;
-        
-        // Check apakah company punya custom favicon
-        fetch(faviconUrl, { method: 'HEAD' })
-            .then(response => {
-                if (response.ok) {
-                    // Company punya custom favicon, pakai itu
-                    this._setFavicon(faviconUrl);
-                } else {
-                    // Tidak ada custom favicon, pakai default Odoo
-                    this._setFavicon(this.originalFavicon || '/web/static/img/favicon.ico');
-                }
-            })
-            .catch(() => {
-                // Error, pakai default
-                this._setFavicon(this.originalFavicon || '/web/static/img/favicon.ico');
-            });
-    },
+    function getCurrentCompanyId() {
+        if (typeof odoo !== 'undefined' && odoo.session_info) {
+            if (odoo.session_info.user_companies && odoo.session_info.user_companies.current_company) {
+                return odoo.session_info.user_companies.current_company;
+            }
+            if (odoo.session_info.company_id) {
+                return odoo.session_info.company_id;
+            }
+        }
+        return null;
+    }
     
-    _setFavicon(url) {
+    function setFavicon(url) {
         // Remove existing favicon links
         const existingLinks = document.querySelectorAll("link[rel*='icon']");
         existingLinks.forEach(link => link.remove());
@@ -85,6 +40,54 @@ const faviconService = {
         shortcutLink.href = url;
         document.head.appendChild(shortcutLink);
     }
-};
-
-registry.category("services").add("favicon", faviconService);
+    
+    function updateFavicon() {
+        const companyId = getCurrentCompanyId();
+        if (!companyId) return;
+        
+        // URL for custom company favicon
+        const faviconUrl = `/web/company/${companyId}/favicon?t=${Date.now()}`;
+        
+        // Check if company has custom favicon
+        fetch(faviconUrl, { method: 'HEAD' })
+            .then(response => {
+                if (response.ok) {
+                    setFavicon(faviconUrl);
+                } else {
+                    setFavicon(originalFavicon || '/web/static/img/favicon.ico');
+                }
+            })
+            .catch(() => {
+                setFavicon(originalFavicon || '/web/static/img/favicon.ico');
+            });
+    }
+    
+    function init() {
+        if (!originalFavicon) {
+            originalFavicon = getCurrentFavicon();
+        }
+        
+        const companyId = getCurrentCompanyId();
+        lastCompanyId = companyId;
+        
+        updateFavicon();
+    }
+    
+    // Polling loop
+    setInterval(() => {
+        const currentCompanyId = getCurrentCompanyId();
+        if (currentCompanyId && currentCompanyId !== lastCompanyId) {
+            lastCompanyId = currentCompanyId;
+            updateFavicon();
+        }
+    }, 1000);
+    
+    if (document.readyState === 'loading') {
+        document.addEventListener('DOMContentLoaded', init);
+    } else {
+        init();
+    }
+    
+    setTimeout(init, 500);
+    setTimeout(init, 1000);
+})();
