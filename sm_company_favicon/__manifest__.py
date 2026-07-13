@@ -62,7 +62,7 @@ environments where each company needs its own branding in browser tabs.
 For questions, issues, or feature requests, please contact the author
 or leave a comment on the Odoo Apps page.
     """,
-    'version': '16.0.1.0.0',
+    'version': '15.0.1.0.0',
     'author': "Steven Marpaung",
     'maintainers': ['Stevenmarp'],
     'website': "https://apps.odoo.com/apps/browse?repo_maintainer_id=512936",
