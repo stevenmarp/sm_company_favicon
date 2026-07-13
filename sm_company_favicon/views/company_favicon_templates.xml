@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <template id="assets_backend" inherit_id="web.assets_backend" name="Company Favicon Backend Assets">
+        <xpath expr="." position="inside">
+            <script type="text/javascript" src="/sm_company_favicon/static/src/js/favicon_service.js"></script>
+        </xpath>
+    </template>
+</odoo>

@@ -62,7 +62,7 @@ environments where each company needs its own branding in browser tabs.
 For questions, issues, or feature requests, please contact the author
 or leave a comment on the Odoo Apps page.
     """,
-    'version': '15.0.1.0.0',
+    'version': '14.0.1.0.0',
     'author': "Steven Marpaung",
     'maintainers': ['Stevenmarp'],
     'website': "https://apps.odoo.com/apps/browse?repo_maintainer_id=512936",
@@ -71,12 +71,8 @@ or leave a comment on the Odoo Apps page.
     'depends': ['web', 'base'],
     'data': [
         'views/res_company_views.xml',
+        'views/company_favicon_templates.xml',
     ],
-    'assets': {
-        'web.assets_backend': [
-            'sm_company_favicon/static/src/js/favicon_service.js',
-        ],
-    },
     'images': [
         'static/description/banner.png',
         'static/description/favicon_field.png',
